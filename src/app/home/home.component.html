@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Bolachas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+  <h2 class="text-2xl md:text-3xl font-bold text-center text-white m-8 drop-shadow">Vitrine de Bolachas</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-325 mx-auto">
+
+    <div class="card bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of bolachas">
+      <figure class="px-6 pt-6">
+        <img src="oreo{{bolacha.codigo}}.png" alt="Oreo" class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
+      </figure>
+      <div class="card-body items-center text-center p-4">
+        <h3 class="card-title text-white text-lg">{{bolacha.nome}}</h3>
+        <p class="text-indigo-100 text-sm">{{bolacha.descricao}}</p>
+        <p class="text-indigo-100 text-lg">R${{bolacha.valor}}</p>
+        <div class="card-actions mt-2">
+          <button class="btn btn-primary bg-blue-900 border-none hover:bg-blue-800 text-white text-xs px-4 py-1 rounded">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</html>
+
