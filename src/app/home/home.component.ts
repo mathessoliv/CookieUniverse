@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Bolacha } from '../model/bolacha';
 import { Component } from '@angular/core';
+import { Cesta } from '../model/cesta';
 
 @Component({
   selector: 'app-home',
@@ -48,4 +49,20 @@ export class HomeComponent {
       quantidade: 0
     }
   ];
+
+  adicionarBolacha(bolacha: Bolacha) {
+    let json = localStorage.getItem("bolachas");
+    let cesta = new Cesta();
+
+    if (json != null) {
+      cesta = JSON.parse(json);
+    } 
+
+    cesta.itens.push(bolacha);
+    cesta.total += bolacha.valor;
+    
+    localStorage.setItem("bolachas", JSON.stringify(cesta));
+    location.href = "cesta";
+  }
+
 }
