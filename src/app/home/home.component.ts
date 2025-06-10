@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Bolacha } from '../model/bolacha';
 import { Component } from '@angular/core';
+import { Cesta } from '../model/cesta';
 
 @Component({
   selector: 'app-home',
@@ -48,8 +49,6 @@ export class HomeComponent {
       quantidade: 0
     }
   ];
-<<<<<<< Updated upstream
-=======
 
   adicionarBolacha(bolacha: Bolacha) {
     let json = localStorage.getItem("bolachas");
@@ -71,5 +70,4 @@ export class HomeComponent {
     location.href = "detalhes";
   }
 
->>>>>>> Stashed changes
 }
