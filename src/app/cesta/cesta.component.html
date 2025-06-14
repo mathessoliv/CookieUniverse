@@ -1,0 +1,74 @@
+<div class="flex flex-col items-center justify-center h-155">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-white drop-shadow">Sua Cesta</h2>
+
+    <div class="text-center text-indigo-100 text-lg mt-10">{{mensagem}}</div>
+
+    <div class="table w-200">
+        <thead>
+            <tr>
+                <th>
+                    <label>
+                        <input type="checkbox" class="checkbox" />
+                    </label>
+                </th>
+                <th></th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Detalhes</th>
+                <th>X</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let item of cesta.itens; index as i" >
+                <th>
+                    <label>
+                        <input type="checkbox" class="checkbox" />
+                    </label>
+                </th>
+
+                <td>
+                    <div class="flex items-center gap-3">
+                        <div class="avatar">
+                            <div class="mask mask-squircle h-14 w-14">
+                                <img src="oreo{{item.codigo}}.png" alt="Oreo" />
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+                <td class="mt-2">{{item.nome}}<br>{{item.descricao}}</td>
+                <td>{{item.valor}}</td>
+                <td><button class="btn btn-ghost" (click)="detalhes(item)">VER MAIS</button></td>
+                <td><button class="btn btn-ghost text-red-400 hover:text-red-600" (click)="removerItem(i)">X</button></td>
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Total</th>
+                <th>{{cesta.total}}</th>
+            </tr>
+        </tfoot>
+    </div>
+
+        <div class="flex flex-col md:flex-row gap-4 mt-6">
+            <button class="btn btn-ghost text-red-400 hover:text-red-600" (click)="limparCesta()">
+                Limpar Cesta
+            </button>
+    
+            <button class="flex-1 btn btn-primary bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 rounded" (click)="continuarCompra()">
+                Continuar Comprando
+            </button>
+
+            <button class="flex-1 btn btn-primary bg-green-600 hover:bg-green-500 text-white font-semibold py-2 rounded">
+                Finalizar Compra
+            </button>
+        </div>
+        
+</div>
+
+

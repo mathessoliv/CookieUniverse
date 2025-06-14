@@ -52,7 +52,7 @@ export class HomeComponent {
   ];
 
   adicionarBolacha(bolacha: Bolacha) {
-    let json = localStorage.getItem("bolachas");
+    let json = localStorage.getItem("cesta");
     let cesta = new Cesta();
 
     if (json != null) {
@@ -62,7 +62,7 @@ export class HomeComponent {
     cesta.itens.push(bolacha);
     cesta.total += bolacha.valor;
     
-    localStorage.setItem("bolachas", JSON.stringify(cesta));
+    localStorage.setItem("cesta", JSON.stringify(cesta));
     location.href = "cesta";
   }
 
