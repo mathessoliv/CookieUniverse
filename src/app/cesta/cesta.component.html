@@ -1,70 +1,57 @@
-<div class="flex flex-col items-center justify-center h-155">
+<div class="flex flex-col items-center h-155">
 
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-white drop-shadow">Sua Cesta</h2>
+    <h2 class="text-2xl md:text-3xl font-bold text-white drop-shadow" style="margin-top: 2em; margin-left: 0.6em;">Sua Cesta</h2>
 
-    <div class="text-center text-indigo-100 text-lg mt-10">{{mensagem}}</div>
+    <div class="text-indigo-100 text-lg" style="margin-bottom: 2em;">{{mensagem}}</div>
 
-    <div class="table w-200">
+    <table class="w-200 border-spacing-4 items-start" style="margin-bottom: 0.5em">
         <thead>
             <tr>
-                <th>
-                    <label>
-                        <input type="checkbox" class="checkbox" />
-                    </label>
-                </th>
-                <th></th>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Detalhes</th>
-                <th>X</th>
+                <td></td>
+                <td>Nome</td>
+                <td>Valor</td>
+                <td>Detalhes</td>
+                <td>X</td>
             </tr>
         </thead>
-    
-        <tbody>
-            <tr *ngFor="let item of cesta.itens; index as i" >
-                <th>
-                    <label>
-                        <input type="checkbox" class="checkbox" />
-                    </label>
-                </th>
-
-                <td>
-                    <div class="flex items-center gap-3">
-                        <div class="avatar">
-                            <div class="mask mask-squircle h-14 w-14">
-                                <img src="oreo{{item.codigo}}.png" alt="Oreo" />
+        
+       <tbody class="space-y-4"> 
+            <tr *ngFor="let item of cesta.itens; index as i"> 
+                <td class="py-4"> 
+                    <div class="gap-3"> 
+                        <div class="avatar ">
+                            <div class="mask h-20 w-25" style="display: flex; align-items: center; justify-content: center; "> 
+                                <img src="oreo{{item.codigo}}.png" alt="Oreo" style="width: 5em; height: 3.5em;"/> 
                             </div>
                         </div>
                     </div>
                 </td>
-
                 <td class="mt-2">{{item.nome}}<br>{{item.descricao}}</td>
-                <td>{{item.valor}}</td>
+                <td>{{item.valor | number: '1.2-2'}}</td>
                 <td><button class="btn btn-ghost" (click)="detalhes(item)">VER MAIS</button></td>
                 <td><button class="btn btn-ghost text-red-400 hover:text-red-600" (click)="removerItem(i)">X</button></td>
             </tr>
         </tbody>
-        
+
         <tfoot>
             <tr>
-                <th></th>
-                <th></th>
-                <th>Total</th>
-                <th>{{cesta.total}}</th>
+                <td></td>
+                <td>Total</td>
+                <td>{{cesta.total | number: '1.2-2'}}</td>
             </tr>
         </tfoot>
-    </div>
+    </table>   
 
-        <div class="flex flex-col md:flex-row gap-4 mt-6">
-            <button class="btn btn-ghost text-red-400 hover:text-red-600" (click)="limparCesta()">
+        <div class="flex flex-col items-center md:flex-row gap-3 mt-6">
+            <button class="btn btn-ghost text-red-400 rounded-lg w-30 h-10 hover:text-red-600 font-bold" (click)="limparCesta()">
                 Limpar Cesta
             </button>
     
-            <button class="flex-1 btn btn-primary bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 rounded" (click)="continuarCompra()">
+            <button class="btn btn-ghost text-indigo-400 rounded-lg w-30 h-10 hover:indigo-red-600 font-bold" (click)="continuarCompra()">
                 Continuar Comprando
             </button>
 
-            <button class="flex-1 btn btn-primary bg-green-600 hover:bg-green-500 text-white font-semibold py-2 rounded">
+            <button class="btn btn-ghost text-green-400 rounded-lg w-30 h-10 hover:text-green-600 font-bold">
                 Finalizar Compra
             </button>
         </div>

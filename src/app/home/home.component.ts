@@ -61,9 +61,9 @@ export class HomeComponent {
 
     cesta.itens.push(bolacha);
     cesta.total += bolacha.valor;
+    cesta.quantidade += 1;
     
     localStorage.setItem("cesta", JSON.stringify(cesta));
-    location.href = "cesta";
   }
 
   verDetalhes(bolacha: Bolacha) {

@@ -35,6 +35,9 @@ export class CestaComponent {
 
   removerItem(item:number) {
     this.cesta.itens.splice(item, 1);
+    this.cesta.total -= this.cesta.itens[item].valor;
+    this.cesta.quantidade -= 1;
+    
     localStorage.setItem('cesta', JSON.stringify(this.cesta));
   }
 

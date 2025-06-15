@@ -6,4 +6,5 @@ export class Cesta {
     total: number = 0;
     cliente: Cliente = new Cliente();
     itens: Bolacha[] = [];
+    quantidade: number = 0;
 }
