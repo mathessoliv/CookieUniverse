@@ -1,61 +1,68 @@
-<div class="flex flex-col items-center h-155">
+<div class="flex flex-col items-center w-full p-4">
 
-    <h2 class="text-2xl md:text-3xl font-bold text-white drop-shadow" style="margin-top: 2em; margin-left: 0.6em;">Sua Cesta</h2>
+    <h2 class="text-2xl md:text-3xl font-bold text-white drop-shadow" style="margin-top: 1.2em; margin-left: 0.6em;">
+        Sua Cesta
+    </h2>
 
-    <div class="text-indigo-100 text-lg" style="margin-bottom: 2em;">{{mensagem}}</div>
+    <div class="text-indigo-100 text-lg" style="margin-bottom: 2em;">
+        {{mensagem}}
+    </div>
 
-    <table class="w-200 border-spacing-4 items-start" style="margin-bottom: 0.5em">
-        <thead>
-            <tr>
-                <td></td>
-                <td>Nome</td>
-                <td>Valor</td>
-                <td>Detalhes</td>
-                <td>X</td>
-            </tr>
-        </thead>
-        
-       <tbody class="space-y-4"> 
-            <tr *ngFor="let item of cesta.itens; index as i"> 
-                <td class="py-4"> 
-                    <div class="gap-3"> 
-                        <div class="avatar ">
-                            <div class="mask h-20 w-25" style="display: flex; align-items: center; justify-content: center; "> 
-                                <img src="oreo{{item.codigo}}.png" alt="Oreo" style="width: 5em; height: 3.5em;"/> 
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td class="mt-2">{{item.nome}}<br>{{item.descricao}}</td>
-                <td>{{item.valor | number: '1.2-2'}}</td>
-                <td><button class="btn btn-ghost" (click)="detalhes(item)">VER MAIS</button></td>
-                <td><button class="btn btn-ghost text-red-400 hover:text-red-600" (click)="removerItem(i)">X</button></td>
-            </tr>
-        </tbody>
+    <div class="w-full max-w-4xl flex flex-col text-white">
 
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>Total</td>
-                <td>{{cesta.total | number: '1.2-2'}}</td>
-            </tr>
-        </tfoot>
-    </table>   
-
-        <div class="flex flex-col items-center md:flex-row gap-3 mt-6">
-            <button class="btn btn-ghost text-red-400 rounded-lg w-30 h-10 hover:text-red-600 font-bold" (click)="limparCesta()">
-                Limpar Cesta
-            </button>
-    
-            <button class="btn btn-ghost text-indigo-400 rounded-lg w-30 h-10 hover:indigo-red-600 font-bold" (click)="continuarCompra()">
-                Continuar Comprando
-            </button>
-
-            <button class="btn btn-ghost text-green-400 rounded-lg w-30 h-10 hover:text-green-600 font-bold">
-                Finalizar Compra
-            </button>
+        <div class="flex items-center px-4 py-2 text-left text-gray-300 uppercase text-sm border-b border-gray-600">
+            <div class="w-24 md:w-28"></div> 
+            <div class="w-121">Nome</div> 
+            <div class="w-23 text-center">Valor</div>
+            <div class="w-32 text-center">Detalhes</div>
+            <div class="w-16 text-center">X</div>
         </div>
+
+        <div class="max-h-82 overflow-y-auto ">          
+            <div class="flex items-center" style="margin: 0.9em 0;" *ngFor="let item of cesta.itens; index as i">
+                
+                <div class="w-24 md:w-28 p-2">
+                    <img src="oreo{{item.codigo}}.png" alt="Oreo" class="w-20 h-auto object-contain" />
+                </div>
+                
+                <div class="flex-1">
+                    <div class="font-bold">{{item.nome}}</div>
+                    <div class="text-sm opacity-80">{{item.descricao}}</div>
+                </div>
+                
+                <div class="w-24 text-center">{{item.valor | number: '1.2-2'}}</div>
+                
+                <div class="w-32 text-center">
+                    <button class="btn btn-ghost" (click)="detalhes(item)">VER MAIS</button>
+                </div>
+                
+                <div class="w-16 text-center">
+                    <button class="btn btn-ghost text-lg text-red-400 hover:text-red-600" (click)="removerItem(i)">X</button>
+                </div>
+            </div>
+        </div>
+
         
+        <div class="flex items-center px-4 py-4 text-xl font-bold mt-4">
+            <div class="w-28"></div> 
+            <div class="w-121">Total</div> 
+            <div class="w-21 text-center">{{cesta.total | number: '1.2-2'}}</div>
+        </div>
+
+    </div>
+
+    <div class="flex flex-col items-center md:flex-row gap-3 mt-6">
+        <button class="btn btn-ghost text-red-400 rounded-lg w-30 h-10 hover:text-red-600 font-bold" (click)="limparCesta()">
+            Limpar Cesta
+        </button>
+
+        <button class="btn btn-ghost text-indigo-400 rounded-lg w-30 h-10 hover:indigo-red-600 font-bold" (click)="continuarCompra()">
+            Continuar Comprando
+        </button>
+
+        <button class="btn btn-ghost text-green-400 rounded-lg w-30 h-10 hover:text-green-600 font-bold">
+            Finalizar Compra
+        </button>
+    </div>
+
 </div>
-
-
