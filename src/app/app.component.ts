@@ -55,9 +55,11 @@ export class AppComponent {
   verPerfil() {
     location.href = '/perfil';
   }
-
   sair() {
-    location.href = '/';
+    // Limpar dados do usuário logado
+    localStorage.removeItem('clienteLogado');
+    localStorage.removeItem('cesta');
+    location.href = '/login';
   }
 
   fazerBusca() {
