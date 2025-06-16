@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,17 +6,8 @@
     <title>Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <!--
-  This example requires updating your template:
 
-  ```
-  <html class="h-full bg-white">
-  <body class="h-full">
-  ```
--->
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img class="mx-auto w-50"style="margin-left: 0.8m;" src="oreo3.png" alt="">
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white-900">Faça seu Resgistro</h2>
   </div>
 
@@ -25,6 +16,22 @@
         <label for="email" class="block text-sm/6 font-medium text-white-900">Email</label>
         <div class="mt-2">
           <input type="email" [(ngModel)]="obj.email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+        </div>
+      </div>
+
+      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">    <form class="space-y-6" (ngSubmit)="gravar()">
+      <div>
+        <label for="cpf" class="block text-sm/6 font-medium text-white-900">CPF</label>
+        <div class="mt-2">
+          <input type="cpf" [(ngModel)]="obj.cpf" name="cpf" id="cpf" autocomplete="cpf" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+        </div>
+      </div>
+
+      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">    <form class="space-y-6" (ngSubmit)="gravar()">
+      <div>
+        <label for="telefone" class="block text-sm/6 font-medium text-white-900">Telefone</label>
+        <div class="mt-2">
+          <input type="telefone" [(ngModel)]="obj.telefone" name="telefone" id="telefone" autocomplete="telefone" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
         </div>
       </div>
 
@@ -51,5 +58,4 @@
   </div>
   
 
-</body>
-</html>
+

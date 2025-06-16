@@ -22,10 +22,8 @@ export class DetalheComponent {
        } else {
         this.bolacha = JSON.parse(json);
        }
-    }
-
-    adicionarBolacha(bolacha: Bolacha) {
-        let json = localStorage.getItem("bolachas");
+    }    adicionarBolacha(bolacha: Bolacha) {
+        let json = localStorage.getItem("cesta");
         let cesta = new Cesta();
     
         if (json != null) {
