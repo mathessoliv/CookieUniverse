@@ -1,13 +1,10 @@
-<div class="h-130 flex justify-center items-center">
-
-    <div class="card bg-indigo-900/90 border border-indigo-800 shadow-2xl rounded-2xl max-w-125 w-full">
+<div class="h-130 flex justify-center items-center">    <div class="card bg-indigo-900/90 border border-indigo-800 shadow-2xl rounded-2xl max-w-125 w-full">
         <figure class="px-8 pt-8">
-            <img src="oreo{{bolacha.codigo}}.png" alt="Oreo" class="rounded-xl w-32 h-32 object-contain drop-shadow-lg" />
+            <img [src]="bolacha.categoria.toLowerCase() + (bolacha.codigo === 8 ? '8' : (bolacha.codigo > 4 ? bolacha.codigo - 4 : bolacha.codigo)) + '.png'" alt="{{bolacha.marca}}" class="rounded-xl w-32 h-32 object-contain drop-shadow-lg" />
         </figure>
-        
-        <div class="card-body items-center text-center p-6">
+          <div class="card-body items-center text-center p-6">
             <h2 class="card-title text-white text-2xl mb-2">{{bolacha.nome}}</h2>
-            <p class="text-indigo-100 text-base mb-4">Bolacha recheada sabor chocolate, crocante e deliciosa, <br>perfeita para qualquer momento do dia.</p>
+            <p class="text-indigo-100 text-base mb-4">{{bolacha.descricao}}</p>
             
             <p class="text-indigo-200 text-lg font-semibold mb-6">R${{bolacha.valor}}</p>
         

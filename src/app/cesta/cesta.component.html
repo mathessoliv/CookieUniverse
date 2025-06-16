@@ -19,10 +19,8 @@
         </div>
 
         <div class="max-h-82 overflow-y-auto ">          
-            <div class="flex items-center" style="margin: 0.9em 0;" *ngFor="let item of cesta.itens; index as i">
-                
-                <div class="w-24 md:w-28 p-2">
-                    <img src="oreo{{item.codigo}}.png" alt="Oreo" class="w-20 h-auto object-contain" />
+            <div class="flex items-center" style="margin: 0.9em 0;" *ngFor="let item of cesta.itens; index as i">                <div class="w-24 md:w-28 p-2">
+                    <img [src]="item.categoria.toLowerCase() + (item.codigo === 5 ? '5' : (item.codigo === 6 ? '6' : (item.codigo === 7 ? '7' : (item.codigo === 8 ? '8' : (item.codigo > 4 ? item.codigo - 4 : item.codigo))))) + '.png'" alt="{{item.marca}}" class="w-20 h-auto object-contain" />
                 </div>
                 
                 <div class="flex-1">
