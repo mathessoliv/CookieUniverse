@@ -16,6 +16,7 @@ export class CadastroComponent {
   constructor() {
     this.obj = new Cliente();
   }
+
   gravar() {
     // validações de para cadastrar o email
     if (!this.obj.email || !this.obj.email.trim()) {
@@ -40,6 +41,8 @@ export class CadastroComponent {
         this.mensagem = "Este e-mail já está cadastrado!";
         return;
       }
+
+      location.href = "/"
     }
 
     // validações ok cadastra o cliente

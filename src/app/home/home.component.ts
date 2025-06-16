@@ -211,21 +211,32 @@ export class HomeComponent {
     }
 
     
-  }
-
+  }  
+  
   fazerBusca(filtro: string) {
     const todasBolachas: Bolacha[] = this.bolachas.flat();
     
-    if (filtro == '') {
+    if (filtro == '' || filtro.trim() == '') {
       this.mensagem = "";
+      this.listaFiltrada = todasBolachas;
+      return;
     }
 
     this.mensagem = "Pesquisa por: " + filtro;
     
-    this.listaFiltrada = todasBolachas;
-    this.listaFiltrada = todasBolachas.filter(Bolacha => Bolacha.nome.toLowerCase().includes(filtro.toLowerCase())
-    );
+    this.listaFiltrada = todasBolachas.filter(bolacha => {
+      const filtroLower = filtro.toLowerCase().trim();
+      const nomeMatch = bolacha.nome.toLowerCase().includes(filtroLower);
+      const descricaoMatch = bolacha.descricao.toLowerCase().includes(filtroLower);
+      const marcaMatch = bolacha.marca.toLowerCase().includes(filtroLower);
+      const keywordsMatch = bolacha.keywords.some(keyword => 
+        keyword.toLowerCase().includes(filtroLower)
+      );
+      
+      return nomeMatch || descricaoMatch || marcaMatch || keywordsMatch;
+    });
 
+    localStorage.removeItem('filtro');
   }
 
   adicionarBolacha(bolacha: Bolacha) {
