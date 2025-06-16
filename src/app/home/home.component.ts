@@ -3,7 +3,6 @@ import { Bolacha } from '../model/bolacha';
 import { Component } from '@angular/core';
 import { Cesta } from '../model/cesta';
 
-
 @Component({
   selector: 'app-home',
   imports: [CommonModule],
@@ -12,8 +11,14 @@ import { Cesta } from '../model/cesta';
 })
 export class HomeComponent {
   public mensagem: string = "";
+  public oreos: Bolacha[] = [];
+  public bauduccos: Bolacha[] = [];
+  public bauduccoWaffers: Bolacha[] = [];
+  public trakinas: Bolacha[] = [];
+  public trakinasWaffers: Bolacha[] = [];
   
-  public oreos: Bolacha[] = [
+  public bolachas: Bolacha[][] = [
+  this.oreos = [
     { codigo: 1,
       nome:"Oreo tradicional",
       marca: "Oreo",
@@ -98,10 +103,9 @@ export class HomeComponent {
       categoria: "Oreo",
       quantidade: 0
     }
-  ];
- 
+  ],
 
-  public bauduccos: Bolacha[] = [
+  this.bauduccos = [
     {
       codigo: 1,
       nome: "Bauducco Chocolate",
@@ -145,10 +149,11 @@ export class HomeComponent {
       categoria: "Bauducco",
       quantidade: 0
     }
-  ];
-  public bauduccoWaffers: Bolacha[] = [
+  ],
+
+  this.bauduccoWaffers = [
     {
-      codigo: 5,
+      codigo: 1,
       nome: "Bauducco Wafer Chocolate",
       marca:"Bauducco",
       valor: 2.99,
@@ -159,7 +164,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 6,
+      codigo: 2,
       nome: "Bauducco Wafer Morango",
       marca:"Bauducco",
       valor: 2.99,
@@ -170,7 +175,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 7,
+      codigo: 3,
       nome: "Bauducco Wafer Avelã",
       marca:"Bauducco",
       valor: 2.99,
@@ -181,7 +186,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 8,
+      codigo: 4,
       nome: "Bauducco Wafer Leite",
       marca:"Bauducco",
       valor: 2.99,
@@ -190,9 +195,9 @@ export class HomeComponent {
       categoria: "Bauducco",
       quantidade: 0
     }
-  ];
+  ],
 
-  public trakinas: Bolacha[] = [
+  this.trakinas = [
      {
       codigo: 1,
       nome: "Trakinas Chocolate",
@@ -236,10 +241,11 @@ export class HomeComponent {
       categoria: "Trakinas",
       quantidade: 0
     }
-  ];
-  public trakinasWaffers: Bolacha[] = [
+  ],
+
+  this.trakinasWaffers = [
     {
-      codigo: 5,
+      codigo: 1,
       nome: "Trakinas Wafer Chocolate",
       marca:"Trakinas",
       valor: 3.29,
@@ -250,7 +256,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 6,
+      codigo: 2,
       nome: "Trakinas Wafer Morango",
       marca:"Trakinas",
       valor: 3.29,
@@ -261,7 +267,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 7,
+      codigo: 3,
       nome: "Trakinas Wafer Coco",
       marca:"Trakinas",
       valor: 3.29,
@@ -272,7 +278,7 @@ export class HomeComponent {
     },
 
     {
-      codigo: 8,
+      codigo: 4,
       nome: "Trakinas Wafer Doce de Leite",
       marca:"Trakinas",
       valor: 3.29,
@@ -281,26 +287,38 @@ export class HomeComponent {
       categoria: "Trakinas",
       quantidade: 0
     }
-  ];
+    ]
 
-  public listaFiltrada: Bolacha[] = [];
-  bolachas: Bolacha[] | undefined;
+  ];
+  
+  public listaFiltrada: Bolacha[];
 
   constructor() {
     let json = localStorage.getItem("filtro");
+    this.listaFiltrada = this.bolachas.flat();
+
     if (json != null) {
         let filtro = json;
-
         if (filtro != "") this.fazerBusca(filtro);
     }
+
+    
   }
 
   fazerBusca(filtro: string) {
-    this.mensagem = "Pesquisa por: " + filtro;
-    this.listaFiltrada = this.bolachas ?? [];
-    this.bolachas = this.listaFiltrada.filter(Bolacha => Bolacha.nome.toLowerCase().includes(filtro.toLowerCase())
-      );
+    const todasBolachas: Bolacha[] = this.bolachas.flat();
+    
+    if (filtro == '') {
+      this.mensagem = "";
     }
+
+    this.mensagem = "Pesquisa por: " + filtro;
+    
+    this.listaFiltrada = todasBolachas;
+    this.listaFiltrada = todasBolachas.filter(Bolacha => Bolacha.nome.toLowerCase().includes(filtro.toLowerCase())
+    );
+
+  }
 
   adicionarBolacha(bolacha: Bolacha) {
     let json = localStorage.getItem("cesta");
