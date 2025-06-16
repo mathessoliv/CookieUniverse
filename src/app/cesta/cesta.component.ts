@@ -32,10 +32,12 @@ export class CestaComponent {
   continuarCompra(){
     location.href = '/home';
   }
-
   removerItem(item:number) {
+    // Salvar o valor antes de remover o item
+    const valorItem = this.cesta.itens[item].valor;
+    
     this.cesta.itens.splice(item, 1);
-    this.cesta.total -= this.cesta.itens[item].valor;
+    this.cesta.total -= valorItem;
     this.cesta.quantidade -= 1;
     
     localStorage.setItem('cesta', JSON.stringify(this.cesta));

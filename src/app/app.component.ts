@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Cesta } from './model/cesta';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,17 +17,43 @@ export class AppComponent {
   filtro: string = '';
   cesta: Cesta = new Cesta();
 
-  constructor() {
+  constructor(private router: Router) {
     let json = localStorage.getItem('cesta');
     
     if (json != null) {
       this.cesta = JSON.parse(json);
+    }    // Escutar mudanças de rota para mostrar/esconder header
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.checkRouteForHeader(event.url);
+      this.updateCesta(); // Atualizar cesta quando mudar de rota
+    });
+
+    // Verificar rota inicial
+    this.checkRouteForHeader(this.router.url);
+  }
+
+  private checkRouteForHeader(url: string) {
+    // Esconder header nas rotas de login e cadastro
+    const hiddenRoutes = ['/', '/login', '/cadastro'];
+    this.hideHeader = hiddenRoutes.includes(url);
+  }
+
+  private updateCesta() {
+    // Atualizar cesta do localStorage
+    let json = localStorage.getItem('cesta');
+    if (json != null) {
+      this.cesta = JSON.parse(json);
     }
-  
   }
 
   verCarrinho() {
     location.href = '/cesta';
+  }
+
+  verPerfil() {
+    location.href = '/perfil';
   }
 
   fazerBusca() {

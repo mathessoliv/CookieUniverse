@@ -144,7 +144,9 @@ export class HomeComponent {
       keywords: ["BISCOITO", "BAUDUCCO", "DUPLO" , "CHOCOLATE"],
       categoria: "Bauducco",
       quantidade: 0
-    }
+    },
+
+    
   ];
   public bauduccoWaffers: Bolacha[] = [
     {

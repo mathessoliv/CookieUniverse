@@ -22,10 +22,8 @@ export class DetalheComponent {
        } else {
         this.bolacha = JSON.parse(json);
        }
-    }
-
-    adicionarBolacha(bolacha: Bolacha) {
-        let json = localStorage.getItem("bolachas");
+    }    adicionarBolacha(bolacha: Bolacha) {
+        let json = localStorage.getItem("cesta");
         let cesta = new Cesta();
     
         if (json != null) {
@@ -36,7 +34,7 @@ export class DetalheComponent {
         cesta.total += bolacha.valor;
         cesta.quantidade += 1;
         
-        localStorage.setItem("bolachas", JSON.stringify(cesta));
+        localStorage.setItem("cesta", JSON.stringify(cesta));
         location.href = "cesta";
       }
 
