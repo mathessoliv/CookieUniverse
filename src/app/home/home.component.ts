@@ -283,6 +283,25 @@ export class HomeComponent {
     }
   ];
 
+  public listaFiltrada: Bolacha[] = [];
+  bolachas: Bolacha[] | undefined;
+
+  constructor() {
+    let json = localStorage.getItem("filtro");
+    if (json != null) {
+        let filtro = json;
+
+        if (filtro != "") this.fazerBusca(filtro);
+    }
+  }
+
+  fazerBusca(filtro: string) {
+    this.mensagem = "Pesquisa por: " + filtro;
+    this.listaFiltrada = this.bolachas ?? [];
+    this.bolachas = this.listaFiltrada.filter(Bolacha => Bolacha.nome.toLowerCase().includes(filtro.toLowerCase())
+      );
+    }
+
   adicionarBolacha(bolacha: Bolacha) {
     let json = localStorage.getItem("cesta");
     let cesta = new Cesta();

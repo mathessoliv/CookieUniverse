@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Router, NavigationEnd } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Cesta } from './model/cesta';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'CookieUniverse';
   hideHeader = false;
-  cesta : Cesta = new Cesta();
+  filtro: string = '';
+  cesta: Cesta = new Cesta();
 
   constructor() {
     let json = localStorage.getItem('cesta');
@@ -26,5 +27,10 @@ export class AppComponent {
 
   verCarrinho() {
     location.href = '/cesta';
+  }
+
+  fazerBusca() {
+    localStorage.setItem('filtro', this.filtro);
+    location.href = '/home'
   }
 }
