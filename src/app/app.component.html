@@ -1,13 +1,13 @@
-<div class="h-screen w-screen bg-linear-to-r from-blue-950 via-indigo-950 to violet-950">
+<div class="h-screen w-380 bg-linear-to-r from-blue-950 via-indigo-950 to violet-950">
 
 <div class="flex justify-between items-center h-18 bg-indigo-950 shadow-sm">
 
   <div style="margin-left: 2em;">
-    <a class="btn btn-ghost text-xl" href="https://oreo.com" target="_blank"><img src="logo-oreo.png" width="80em"></a>
+    <a class="btn btn-ghost text-xl" href="https://oreo.com" target="_blank"><img src="logo-oreo.png" width="80em" style="margin-top: -0.7em;"></a>
   </div>
 
   <div>
-    <label class="input w-80 rounded-lg bg-indigo-800 hover:bg-indigo-900 text-white focus:outline-none">
+    <label class="ml-1 input w-80 rounded-lg bg-indigo-800 hover:bg-indigo-900 text-white focus:outline-none">
       <svg class="h-[1em] opacity-50 pl-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g
           stroke-linejoin="round"
@@ -28,57 +28,49 @@
     <div class="dropdown dropdown-end">
       
       <div tabindex="0" role="button" style="margin-right: 1em;" class="btn btn-ghost btn-circle">
-        <div class="indicator" >
-
+        <div class="indicator">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
 
           <span class="badge badge-sm indicator-item">{{cesta.quantidade}}</span>
-          
-
         </div>
       </div>
 
-      <div
+       <div
         tabindex="0"
-        class="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
+        class="card card-compact dropdown-content bg-indigo-900 border border-indigo-700 w-52 shadow-lg rounded-md">
 
-        <div class="card-body">
+        <div class="card-body text-white"> 
           <span class="text-lg font-bold">{{cesta.quantidade}} bolachas</span>
-          <span class="text-info">Total: R${{cesta.total | number: '1.2-2'}}</span>
-
-          <div class="card-actions">
-            <button class="btn btn-primary btn-block" (click)="verCarrinho()">Ver carrinho</button>
+          <span class="text-indigo-300">Total: R${{cesta.total | number: '1.2-2'}}</span> 
+          <div class="card-actions mt-2">
+            <button class="btn btn-sm bg-indigo-600 hover:bg-indigo-500 text-white border-none btn-block rounded-md" (click)="verCarrinho()">Ver carrinho</button> 
           </div>
         </div>
-
-      </div>
-
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" style="margin-right: 1em;">
-          <div class="w-10 rounded-full">
-            <img
-              alt="Imagem de perfil"
-              src="conta.png" style="filter: invert(1)"/>
-          </div>
-        </div> 
-
-        <ul 
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        
-          <li>
-            <a class="justify-between">
-              Perfil
-              <span class="badge">Novo</span>
-            </a>
-          </li>
-          <li><a>Configurações</a></li>
-          <li><a>Sair</a></li>
-        </ul>
-
       </div>
     </div>
+
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" style="margin-right: 1em;">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Imagem de perfil"
+            src="conta.png" style="filter: invert(1)"/>
+        </div>
+      </div> 
+
+      <ul 
+        tabindex="0"
+        class="card card-compact dropdown-content bg-indigo-900 border border-indigo-700 w-52 shadow-lg rounded-md p-2">
+
+        <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer">Perfil</a></li>
+        <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer">Configurações</a></li>
+        <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer">Sair</a></li>
+
+      </ul>
+
+    </div>
   </div>
+  
 
 </div>
 
