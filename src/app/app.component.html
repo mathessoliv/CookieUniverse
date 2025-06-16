@@ -6,6 +6,24 @@
     <a class="btn btn-ghost text-xl" href="https://oreo.com" target="_blank"><img src="logo-oreo.png" width="80em"></a>
   </div>
 
+  <div>
+    <label class="input w-80 rounded-lg bg-indigo-800 hover:bg-indigo-900 text-white focus:outline-none">
+      <svg class="h-[1em] opacity-50 pl-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke-width="3.5"
+          fill="none"
+          stroke="currentColor"
+        >
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="M21 21l-4.35-4.35"></path>
+        </g>
+      </svg>
+      <input type="search" placeholder="Pesquisar" [(ngModel)]="filtro" (keydown.enter)="fazerBusca()"/>
+    </label>
+  </div>
+
   <div class="flex-none">
     <div class="dropdown dropdown-end">
       
