@@ -9,9 +9,9 @@
 
 <div *ngIf="mensagem != ''">
     <h2 class="md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">{{this.mensagem}}</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-325 mx-auto">   
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">   
             
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto" *ngFor="let bolacha of listaFiltrada">
+      <div class="card m-4 xl:m-2 flex justify-center items-center bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of listaFiltrada">
         <figure class="px-6 pt-6">
           <img src="{{bolacha.marca.toLowerCase()}}{{bolacha.codigo}}.png" alt="{{bolacha.marca}}" 
               class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
@@ -34,7 +34,7 @@
     </div>
 </div>
   
-<div *ngIf="this.mensagem == '' " >"
+<div *ngIf="this.mensagem == '' " >
     <h2 class="md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">Oreos</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">  
       

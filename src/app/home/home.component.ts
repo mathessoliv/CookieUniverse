@@ -151,52 +151,6 @@ export class HomeComponent {
     }
   ],
 
-  this.bauduccoWaffers = [
-    {
-      codigo: 1,
-      nome: "Bauducco Wafer Chocolate",
-      marca:"Bauducco",
-      valor: 2.99,
-      descricao: "Wafer Bauducco recheado de chocolate 120g",
-      keywords: ["WAFER", "BAUDUCCO", "CHOCOLATE"],
-      categoria: "Bauducco",
-      quantidade: 0
-    },
-
-    {
-      codigo: 2,
-      nome: "Bauducco Wafer Morango",
-      marca:"Bauducco",
-      valor: 2.99,
-      descricao: "Wafer Bauducco recheado de morango 120g",
-      keywords: ["WAFER", "BAUDUCCO", "MORANGO"],
-      categoria: "Bauducco",
-      quantidade: 0
-    },
-
-    {
-      codigo: 3,
-      nome: "Bauducco Wafer Avelã",
-      marca:"Bauducco",
-      valor: 2.99,
-      descricao: "Wafer Bauducco recheado de avelã 120g",
-      keywords: ["WAFER", "BAUDUCCO", "AVELÃ"],
-      categoria: "Bauducco",
-      quantidade: 0
-    },
-
-    {
-      codigo: 4,
-      nome: "Bauducco Wafer Leite",
-      marca:"Bauducco",
-      valor: 2.99,
-      descricao: "Wafer Bauducco recheado de leite 120g",
-      keywords: ["WAFER", "BAUDUCCO", "LEITE"],
-      categoria: "Bauducco",
-      quantidade: 0
-    }
-  ],
-
   this.trakinas = [
      {
       codigo: 1,
@@ -241,53 +195,7 @@ export class HomeComponent {
       categoria: "Trakinas",
       quantidade: 0
     }
-  ],
-
-  this.trakinasWaffers = [
-    {
-      codigo: 1,
-      nome: "Trakinas Wafer Chocolate",
-      marca:"Trakinas",
-      valor: 3.29,
-      descricao: "Wafer Trakinas recheado de chocolate 115g",
-      keywords: ["WAFER", "TRAKINAS", "CHOCOLATE"],
-      categoria: "Trakinas",
-      quantidade: 0
-    },
-
-    {
-      codigo: 2,
-      nome: "Trakinas Wafer Morango",
-      marca:"Trakinas",
-      valor: 3.29,
-      descricao: "Wafer Trakinas recheado de morango 115g",
-      keywords: ["WAFER", "TRAKINAS", "MORANGO"],
-      categoria: "Trakinas",
-      quantidade: 0
-    },
-
-    {
-      codigo: 3,
-      nome: "Trakinas Wafer Coco",
-      marca:"Trakinas",
-      valor: 3.29,
-      descricao: "Wafer Trakinas recheado de coco 115g",
-      keywords: ["WAFER", "TRAKINAS", "COCO"],
-      categoria: "Trakinas",
-      quantidade: 0
-    },
-
-    {
-      codigo: 4,
-      nome: "Trakinas Wafer Doce de Leite",
-      marca:"Trakinas",
-      valor: 3.29,
-      descricao: "Wafer Trakinas recheado de doce de leite 115g",
-      keywords: ["WAFER", "TRAKINAS", "DOCE", "LEITE"],
-      categoria: "Trakinas",
-      quantidade: 0
-    }
-    ]
+  ]
 
   ];
   
