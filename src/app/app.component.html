@@ -1,9 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Bolachas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>   
+
 <div class="h-screen w-380 bg-linear-to-r from-blue-950 via-indigo-950 to violet-950">
 
 <div *ngIf="!hideHeader" class="flex justify-between items-center h-18 bg-indigo-950 shadow-sm">
 
   <div style="margin-left: 2em;">
-    <a class="btn btn-ghost text-xl" href="https://oreo.com" target="_blank"><img src="logo-oreo.png" width="80em" style="margin-top: -0.7em;"></a>
+    <a class="btn btn-ghost text-xl" href="/home"><img src="logo.png" width="80em" style="margin-top: -0.7em;"></a>
   </div>
 
     <div class="flex justify-center items-center lg:flex-grow lg:px-4 ml-20">
@@ -51,15 +60,20 @@
             <img alt="Imagem de perfil" src="conta.png" style="filter: invert(1)" class="cover"/> 
           </div>
         </div>
-      </div>      <ul 
+
+        <ul 
         tabindex="0"
         class="card card-compact dropdown-content bg-indigo-900 border border-indigo-700 w-52 shadow-lg rounded-md p-2">
 
         <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer" (click)="verPerfil()">Perfil</a></li>
         <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer">Configurações</a></li>
-        <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer">Sair</a></li>
+        <li><a class="text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md hover:cursor-pointer" (click)="sair()">Sair</a></li>
 
       </ul>
+        
+      </div>     
+      
+      
 
     </div>
   </div>

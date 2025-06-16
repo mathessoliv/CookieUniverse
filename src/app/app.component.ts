@@ -56,6 +56,10 @@ export class AppComponent {
     location.href = '/perfil';
   }
 
+  sair() {
+    location.href = '/';
+  }
+
   fazerBusca() {
     localStorage.setItem('filtro', this.filtro);
     location.href = '/home'
