@@ -13,9 +13,7 @@ export class HomeComponent {
   public mensagem: string = "";
   public oreos: Bolacha[] = [];
   public bauduccos: Bolacha[] = [];
-  public bauduccoWaffers: Bolacha[] = [];
   public trakinas: Bolacha[] = [];
-  public trakinasWaffers: Bolacha[] = [];
   
   public bolachas: Bolacha[][] = [
   this.oreos = [
