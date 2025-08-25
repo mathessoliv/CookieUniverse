@@ -1,7 +1,14 @@
-package com.fatec.CookieUniverse;
+package com.fatec.CookieUniverse.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "produto")
 public class Produto {
-     private int codigo;
+    @Id
+    private int codigo;
     private String nome;
     private String descritivo;
     private double valor;
