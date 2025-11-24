@@ -1,0 +1,112 @@
+<div class="flex flex-col items-center w-full px-2 sm:px-4 md:px-6">
+
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow mt-4 sm:mt-6 mb-2 text-center">
+        Sua Cesta
+    </h2>
+
+    <div class="text-indigo-100 text-sm sm:text-base md:text-lg mb-3 sm:mb-4 text-center">
+        {{mensagem}}
+    </div>
+
+    <div class="w-full max-w-4xl flex flex-col text-white">
+
+        <!-- Header da tabela - oculto em mobile -->
+        <div class="hidden md:flex items-center px-4 py-2 text-left text-gray-300 uppercase text-sm border-b border-gray-600">
+            <div class="w-24 md:w-28"></div> 
+            <div class="w-121">Nome</div> 
+            <div class="w-23 text-center">Valor</div>
+            <div class="w-32 text-center">Detalhes</div>
+            <div class="w-16 text-center">X</div>
+        </div>
+
+        <div class="max-h-82 overflow-y-auto">          
+            <div class="flex flex-col md:flex-row md:items-center bg-indigo-900/20 md:bg-transparent rounded-lg md:rounded-none p-3 md:p-0 mb-3 md:mb-0 border md:border-none border-indigo-700" style="margin: 0.9em 0;" *ngFor="let item of cesta.itens; index as i">
+                
+                <!-- Layout Mobile (empilhado) -->
+                <div class="flex md:hidden items-start space-x-3 mb-3">
+                    <div class="w-16 sm:w-20 flex-shrink-0">
+                        <img [src]="item.categoria.toLowerCase() + (item.codigo === 5 ? '5' : (item.codigo === 6 ? '6' : (item.codigo === 7 ? '7' : (item.codigo === 8 ? '8' : (item.codigo > 4 ? item.codigo - 4 : item.codigo))))) + '.png'" alt="{{item.marca}}" class="w-full h-auto object-contain rounded-lg" />
+                    </div>
+                    
+                    <div class="flex-1 min-w-0">
+                        <div class="font-bold text-sm sm:text-base truncate">{{item.nome}}</div>
+                        <div class="text-xs sm:text-sm opacity-80 line-clamp-2">{{item.descricao}}</div>
+                        <div class="text-lg sm:text-xl font-bold text-green-400 mt-1">R$ {{item.valor | number: '1.2-2'}}</div>
+                    </div>
+                    
+                    <button class="text-red-400 hover:text-red-600 p-2 flex-shrink-0" (click)="removerItem(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Botão Ver Mais Mobile -->
+                <div class="flex md:hidden justify-center">
+                    <button class="btn btn-ghost btn-sm bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg px-4 py-2 text-xs" (click)="detalhes(item)">
+                        VER MAIS DETALHES
+                    </button>
+                </div>
+
+                <!-- Layout Desktop (linha) -->
+                <div class="hidden md:flex md:items-center w-full">
+                    <div class="w-24 md:w-28 p-2">
+                        <img [src]="item.categoria.toLowerCase() + (item.codigo === 5 ? '5' : (item.codigo === 6 ? '6' : (item.codigo === 7 ? '7' : (item.codigo === 8 ? '8' : (item.codigo > 4 ? item.codigo - 4 : item.codigo))))) + '.png'" alt="{{item.marca}}" class="w-20 h-auto object-contain" />
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="font-bold">{{item.nome}}</div>
+                        <div class="text-sm opacity-80">{{item.descricao}}</div>
+                    </div>
+                    
+                    <div class="w-24 text-center">R$ {{item.valor | number: '1.2-2'}}</div>
+                    
+                    <div class="w-32 text-center">
+                        <button class="btn btn-ghost btn-sm" (click)="detalhes(item)">VER MAIS</button>
+                    </div>
+                    
+                    <div class="w-16 text-center">
+                        <button class="btn btn-ghost text-lg text-red-400 hover:text-red-600" (click)="removerItem(i)">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Total -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-indigo-800/30 rounded-lg p-3 sm:p-4 mt-4 border border-indigo-600">
+            <div class="text-center sm:text-left mb-2 sm:mb-0">
+                <span class="text-lg sm:text-xl font-bold text-white">Total da Compra:</span>
+            </div>
+            <div class="text-center sm:text-right">
+                <span class="text-lg sm:text-3xl font-bold text-green-400">R$ {{cesta.total | number: '1.2-2'}}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Botões de ação responsivos -->
+    <div class="flex items-center justify-center  sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-6 w-full max-w-md sm:max-w-none">
+        <button class="btn btn-ghost text-red-400 rounded-lg h-10 sm:h-12 hover:text-red-600 hover:bg-red-900/20 font-bold text-sm sm:text-base px-4 sm:px-6 flex-1 sm:flex-none sm:w-auto" (click)="limparCesta()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            Limpar Cesta
+        </button>
+
+        <button class="btn btn-ghost text-indigo-400 rounded-lg h-10 sm:h-12 hover:text-indigo-300 hover:bg-indigo-900/20 font-bold text-sm sm:text-base px-4 sm:px-6 flex-1 sm:flex-none sm:w-auto" (click)="continuarCompra()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Continuar Comprando
+        </button>
+
+        <button class="btn btn-ghost text-green-700 border-none rounded-lg h-10 sm:h-12 font-bold text-sm sm:text-base px-4 sm:px-6 flex-1 sm:flex-none sm:w-auto shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Finalizar Compra
+        </button>
+    </div>
+
+</div>

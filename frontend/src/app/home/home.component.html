@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Bolachas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>   
+
+<div *ngIf="mensagem != ''">
+    <h2 class="md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">{{this.mensagem}}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">   
+
+    <div class="card m-4 xl:m-2 flex justify-center items-center bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of lista">
+
+      <figure class="px-6 pt-6">
+          <img src="{{bolacha.marca.toLowerCase()}}{{bolacha.codigo}}.png" alt="{{bolacha.marca}}" 
+              class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
+        </figure>
+
+        <div class="card-body items-center text-center p-4">
+          <h3 class="card-title text-white text-lg">{{bolacha.nome}}</h3>
+          <p class="text-indigo-100 text-sm">{{bolacha.marca}}</p>
+          <p class="text-indigo-100 text-sm">{{bolacha.descricao}}</p>
+          <p class="text-indigo-100 text-lg">R${{bolacha.valor}}</p>
+
+          <div class="card-actions mt-2">
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="verDetalhes(bolacha)">Ver Detalhes</button>
+
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="adicionarBolacha(bolacha)">Comprar</button>
+          </div>
+        </div>
+
+      </div>  
+    </div>
+</div>
+
+<div *ngIf="this.mensagem == '' " >
+    <h2 class="md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">Oreos</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">  
+
+      <div class="card m-4 xl:m-2 flex justify-center items-center bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of oreos">
+        <figure class="px-6 pt-6">
+          <img src="{{bolacha.marca.toLowerCase()}}{{bolacha.codigo}}.png" alt="{{bolacha.marca}}" 
+              class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
+        </figure>
+
+        <div class="card-body items-center text-center p-4">
+          <h3 class="card-title text-white text-lg">{{bolacha.nome}}</h3>
+          <p class="text-indigo-100 text-sm">{{bolacha.marca}}</p>
+          <p class="text-indigo-100 text-sm">{{bolacha.descricao}}</p>
+          <p class="text-indigo-100 text-lg">R${{bolacha.valor}}</p>
+
+          <div class="card-actions mt-2 flex justify-center items-center ">
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded md:w-26" (click)="verDetalhes(bolacha)">Ver Detalhes</button>
+
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded md:w-26" (click)="adicionarBolacha(bolacha)">Comprar</button>
+          </div>
+        </div>
+
+      </div>  
+    </div>
+
+    <br>
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">Bauducco</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+
+      <div class="card bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of bauduccos">
+        <figure class="px-6 pt-6">
+          <img src="{{bolacha.marca.toLowerCase()}}{{bolacha.codigo}}.png" alt="{{bolacha.marca}}" 
+          class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
+        </figure>
+
+        <div class="card-body items-center text-center p-4">
+          <h3 class="card-title text-white text-lg">{{bolacha.nome}}</h3>
+          <p class="text-indigo-100 text-sm">{{bolacha.marca}}</p>
+          <p class="text-indigo-100 text-sm">{{bolacha.descricao}}</p>
+          <p class="text-indigo-100 text-lg">R${{bolacha.valor}}</p>
+
+          <div class="card-actions mt-2">
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="verDetalhes(bolacha)">Ver Detalhes</button>
+
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="adicionarBolacha(bolacha)">Comprar</button>
+          </div>
+        </div>
+
+      </div>  
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-white mt-8 mb-8 drop-shadow">Trakinas</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+
+      <div class="card bg-indigo-900/80 border border-indigo-800 shadow-lg rounded-xl" *ngFor="let bolacha of trakinas">
+        <figure class="px-6 pt-6">
+          <img src="{{bolacha.marca.toLowerCase()}}{{bolacha.codigo}}.png" alt="{{bolacha.marca}}" 
+          class="rounded-lg w-24 h-24 object-contain drop-shadow-lg" />
+        </figure>
+
+        <div class="card-body items-center text-center p-4">
+          <h3 class="card-title text-white text-lg">{{bolacha.nome}}</h3>
+          <p class="text-indigo-100 text-sm">{{bolacha.marca}}</p>
+          <p class="text-indigo-100 text-sm">{{bolacha.descricao}}</p>
+          <p class="text-indigo-100 text-lg">R${{bolacha.valor}}</p>
+
+          <div class="card-actions mt-2">
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="verDetalhes(bolacha)">Ver Detalhes</button>
+
+            <button class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-4 py-1 rounded" (click)="adicionarBolacha(bolacha)">Comprar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

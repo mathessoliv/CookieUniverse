@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Bolachas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>   
+
+<div class="min-h-screen w-full bg-gradient-to-r from-blue-950 via-indigo-950 to-violet-950">
+
+<div *ngIf="!hideHeader" class="flex justify-between items-center h-16 md:h-18 bg-indigo-950 shadow-sm px-2 md:px-4">
+
+  <div class="flex-shrink-0">
+    <a class="btn btn-ghost text-xl" href="/home">
+      <img src="logo.png" width="60" height="40" alt="Logo" class="md:w-20 object-contain" style="margin-top: -0.8em;">
+    </a>
+  </div>
+
+  <div class="flex-1 flex justify-center items-center ml-4 max-w-md">
+    <label class="input flex items-center w-full h-10 rounded-lg bg-indigo-800 hover:bg-indigo-900 text-white focus-within:ring-1 focus-within:ring-indigo-400 transition-all duration-300 ease-in-out">
+
+      <svg class="h-4 w-4 text-gray-400 mx-2 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+      </svg>
+
+      <input type="search" placeholder="Pesquisar" [(ngModel)]="filtro" (keydown.enter)="fazerBusca()" class="bg-transparent h-full w-full text-sm focus:outline-none pr-2 placeholder-gray-400"/>
+    </label>
+  </div>
+  
+  <div class="flex items-center gap-1 md:gap-2 flex-shrink-0">
+  
+    <div class="dropdown dropdown-end">
+      
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle p-1 md:p-2">
+        <div class="indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span class="badge badge-xs md:badge-sm indicator-item">{{cesta.quantidade}}</span>
+        </div>
+      </div>
+      
+      <div tabindex="0" class="card card-compact dropdown-content bg-indigo-900 border border-indigo-700 w-48 md:w-52 shadow-lg rounded-md z-50"> 
+        <div class="card-body text-white p-3 md:p-4"> 
+          <span class="text-sm md:text-base font-bold">{{cesta.quantidade}} bolachas</span> 
+          <span class="text-indigo-300 text-xs md:text-sm">Total: R${{cesta.total | number: '1.2-2'}}</span> 
+          <div class="card-actions mt-1 md:mt-2">
+            <button class="btn btn-xs md:btn-sm bg-indigo-600 hover:bg-indigo-500 text-white border-none btn-block rounded-md" (click)="verCarrinho()">Ver carrinho</button> 
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+    
+    <div class="dropdown dropdown-end">
+      
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar p-1 md:p-2">
+        <div class="w-6 h-6 md:w-8 md:h-8 rounded-full overflow-hidden">
+          <img alt="Imagem de perfil" src="conta.png" style="filter: invert(1)" class="w-full h-full object-cover"/> 
+        </div>
+      </div>
+
+      <ul 
+      tabindex="0"
+      class="card card-compact dropdown-content bg-indigo-900 border border-indigo-700 w-48 md:w-52 shadow-lg rounded-md p-2 z-50">
+
+      <li><a class="block p-2 text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md cursor-pointer" (click)="verPerfil()">Perfil</a></li>
+      <li><a class="block p-2 text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md cursor-pointer" routerLink="/fale-conosco">Fale Conosco</a></li>
+      <li><a class="block p-2 text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md cursor-pointer">Configurações</a></li>
+      <li><a class="block p-2 text-sm text-indigo-200 hover:bg-indigo-700 hover:text-white rounded-md cursor-pointer" (click)="sair()">Sair</a></li>
+
+    </ul>
+      
+    </div>     
+
+  </div>
+</div>
+
+<router-outlet />
+
+</div>
+

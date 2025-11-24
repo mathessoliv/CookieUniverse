@@ -14,6 +14,7 @@ public class Produto {
     private double valor;
     private double promo;
     private int quantidade;
+    private int destaque;
     private String keywords;
     
     public int getCodigo() {
@@ -52,6 +53,12 @@ public class Produto {
     }
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+    public int getDestaque() {
+        return destaque;
+    }
+    public void setDestaque(int destaque) {
+        this.destaque = destaque;
     }
     public String getKeywords() {
         return keywords;

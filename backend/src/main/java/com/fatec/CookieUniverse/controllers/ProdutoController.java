@@ -28,6 +28,16 @@ public class ProdutoController {
         return produtoRepository.findAll();
     }
 
+    @GetMapping("/api/produtos/vitrine")
+    public List<Produto> listarVitrine() {
+        return produtoRepository.carregarVitrine();
+    }
+
+    @GetMapping("/api/produtos/busca/{keyword}")
+    public List<Produto> buscar(@PathVariable("keyword") String keyword) {
+        return produtoRepository.fazerBusca("%" + keyword + "%");
+    }
+
     @PostMapping("/api/produto")
     public void gravar(@RequestBody Produto produto){
         if (produtoRepository.existsById(produto.getCodigo())){
